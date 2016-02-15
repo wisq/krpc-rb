@@ -23,6 +23,3 @@ script:
 cache:
   - apt
 
-branches:
-  only:
-    - master
