@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
       - mono-devel
+      - openssl
 
 language: ruby
 rvm:
@@ -20,6 +21,7 @@ matrix:
 
 before_install:
   - chmod +x bin/TestServer/TestServer.exe
+  - gem install rubysl-openssl
   - gem install bundler
   - gem update bundler  # Travis bundler versions are quite out of date and can cause install errors - see: https://github.com/rubygems/rubygems/issues/1419
 
