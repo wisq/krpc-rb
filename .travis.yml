@@ -1,6 +1,11 @@
 sudo: required
 dist: trusty
 
+addons:
+  apt:
+    packages:
+      - mono-devel
+
 language: ruby
 rvm:
   - 2.1
@@ -14,12 +19,8 @@ matrix:
     - rvm: rbx-2
 
 before_install:
-  - sudo cat /etc/apt/sources.list
-  - sudo ls -laR /etc/apt/sources.list.d
-  - sudo cat /etc/apt/sources.list.d/*
-  - sudo apt-get update
-  - sudo apt-get install --yes mono-devel
   - chmod +x bin/TestServer/TestServer.exe
+  - gem install bundler
   - gem update bundler  # Travis bundler versions are quite out of date and can cause install errors - see: https://github.com/rubygems/rubygems/issues/1419
 
 script:
