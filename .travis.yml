@@ -31,4 +31,5 @@ cache:
 branches:
   only:
     - master
+    - fixing_travis
 
