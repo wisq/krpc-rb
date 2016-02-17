@@ -5,7 +5,6 @@ addons:
   apt:
     packages:
       - mono-devel
-      - openssl
 
 language: ruby
 rvm:
@@ -20,9 +19,16 @@ matrix:
     - rvm: rbx-2
 
 before_install:
+  - gem install bundler
   - chmod +x bin/TestServer/TestServer.exe
-  - sudo ldconfig
 
 script:
   - bundle exec rspec --color --format documentation spec
+
+cache:
+  - apt
+
+branches:
+  only:
+    - master
 
