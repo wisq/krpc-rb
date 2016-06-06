@@ -201,7 +201,10 @@ module KRPC
     
     def receive_response
       resp_length = rpc_connection.recv_varint
-      resp_data = rpc_connection.recv resp_length
+      resp_data = ""
+      until resp_data.bytesize >= resp_length
+        resp_data += rpc_connection.recv(resp_length - resp_data.bytesize)
+      end
       resp = PB::Response.decode(resp_data)
     end
     
